@@ -23,6 +23,9 @@ module.exports = ({
       const opts = {}
       req.session.success = req.query.success
       req.session.failure = req.query.failure
+      if (req.query && req.query.scope) {
+        opts.scope = req.query.scope.split(' ')
+      }
       if (strategy.preHook) {
         strategy.preHook(req, opts)
       }
